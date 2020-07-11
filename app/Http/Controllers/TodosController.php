@@ -8,7 +8,13 @@ use App\Todo;
 class TodosController extends Controller {
     
     public function index() {
-        return view('todos.index')->with('todos', Todo::all());
+        $todos = Todo::all();
+        return view('todos.index')->with('todos', $todos);
+    }
+
+    public function show($id) {
+        $todo = Todo::find($id);
+        return view('todos.view')->with('todo', $todo);
     }
 
 }
